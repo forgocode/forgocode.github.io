@@ -19,7 +19,7 @@
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/posts/docker/docker%E4%BB%8B%E7%BB%8D/" /><link rel="prev" href="https://example.com/posts/git/git%E4%BB%8B%E7%BB%8D/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/posts/docker/docker%E4%BB%8B%E7%BB%8D/" /><link rel="prev" href="https://example.com/posts/git/git%E4%BB%8B%E7%BB%8D/" /><link rel="next" href="https://example.com/posts/docker/docker%E7%BD%91%E7%BB%9C/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/example.com\/posts\/docker\/docker%E4%BB%8B%E7%BB%8D\/"
-        },"genre": "posts","keywords": "Docker, 云原生","wordcount":  3478 ,
+        },"genre": "posts","keywords": "Docker, 云原生","wordcount":  3924 ,
         "url": "https:\/\/example.com\/posts\/docker\/docker%E4%BB%8B%E7%BB%8D\/","datePublished": "2023-04-30T18:47:57+08:00","dateModified": "2023-04-30T18:47:57+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -104,8 +104,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker介绍</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>forgocode</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/docker/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Docker</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-30">2023-04-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 3478 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-30">2023-04-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 3924 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 8 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -133,10 +133,13 @@
         <li><a href="#对比传统虚拟机的优势">对比传统虚拟机的优势</a></li>
       </ul>
     </li>
-    <li><a href="#docker整体结构">Docker整体结构</a></li>
-    <li><a href="#镜像">镜像</a></li>
-    <li><a href="#容器">容器</a></li>
-    <li><a href="#仓库">仓库</a></li>
+    <li><a href="#docker整体结构">Docker整体结构</a>
+      <ul>
+        <li><a href="#镜像">镜像</a></li>
+        <li><a href="#容器">容器</a></li>
+        <li><a href="#仓库">仓库</a></li>
+      </ul>
+    </li>
     <li><a href="#docker的常用命令">Docker的常用命令</a>
       <ul>
         <li><a href="#对镜像的操作">对镜像的操作</a></li>
@@ -145,6 +148,7 @@
       </ul>
     </li>
     <li><a href="#通过docker-run-启动一个容器发生了什么">通过docker run 启动一个容器，发生了什么</a></li>
+    <li><a href="#定制镜像的原则">定制镜像的原则</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>本文主要简单介绍了docker的一些基本概念和基本操作，以及实现方法</p>
@@ -232,16 +236,23 @@
 </table>
 <h2 id="docker整体结构">Docker整体结构</h2>
 <p>先了解一下docker三个比较重要的概念：</p>
-<h2 id="镜像">镜像</h2>
+<h3 id="镜像">镜像</h3>
 <p>操作系统分为 内核 和 用户空间。对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root 文件系统。除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像 不包含 任何动态数据，其内容在构建之后也不会被改变。由一组文件系统组成，或者说，由多层文件系统联合组成。</p>
-<h2 id="容器">容器</h2>
+<ol>
+<li>镜像本身都是静态的，通过union FS（联合文件系统技术）组成，是一组文件系统的集合。由多层文件系统联合</li>
+<li>将镜像打包的时候，前一层是后一层的基础，每次把前一层文件删除的时候并不是真的删除，而是把这一层置为被删除状态。会一直跟随镜像</li>
+<li>在仓库中看到的是镜像压缩后的大小，关注的是下载的流量大小。在本地看到的时候镜像本身每一层大小的总和，关注的是占用磁盘的大小</li>
+</ol>
+<h3 id="容器">容器</h3>
 <p>镜像（Image）和容器（Container）的关系，就像是面向对象中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
 <p>容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间，就是在一个封闭独立的环境中。</p>
 <p>每一个容器运行时，是以镜像为基础层，在其上创建一个当前容器的存储层，我们可以称这个为容器运行时读写而准备的存储层为 容器存储层。</p>
-<p>容器存储层的生存周期和容器一样，容器消亡时，容器存储层也随之消亡。因此，任何保存于容器存储层的信息都会随容器删除而丢失。</p>
+<p>容器存储层的生存周期和容器一样，容器消亡时，容器存储层也随之消亡。因此，任何保存于容器存储层的信息都会随容器删除而丢失
+镜像是静态的文件系统，容器是镜像运行时的实体。本质上是进程，或者一组进程的集合，但是有自己的命名空间（网络，文件，pid，用户等），运行在一个隔离的环境中。
+容器运行时，在镜像的上面创建一个属于当前容器的存储层，这个存储层可读写。当容器重启的时候，这个可可读写层就会随之消亡。所以一般不可以在可读写层写入数据，一般使用挂载卷或者共享主机目录来实现数据持久化。</p>
 <p>containerd-shim存在的必要性</p>
 <p>docker是怎么删掉的</p>
-<h2 id="仓库">仓库</h2>
+<h3 id="仓库">仓库</h3>
 <p>镜像构建完成后，可以很容易的在当前宿主机上运行，但是，如果需要在其它服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务，Docker Registry 就是这样的服务</p>
 <p>容器的启动流程如下：</p>
 <ol>
@@ -285,7 +296,12 @@
 <li>从地址池配置一个 ip 地址给容器</li>
 <li>执行用户指定的应用程序</li>
 <li>执行完毕后容器被终止</li>
-</ul></div><div class="post-footer" id="post-footer">
+</ul>
+<h2 id="定制镜像的原则">定制镜像的原则</h2>
+<p>每一层都有特定的意义，不要分开构建基础层，Dockerfile中的每一个命令都是一层。如果每一层都分开执行，会变得很臃肿
+联合文件系统的最大层数限制是127</p>
+<p>查看镜像的分层
+docker history ls</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -306,7 +322,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/git/git%E4%BB%8B%E7%BB%8D/" class="prev" rel="prev" title="Git介绍"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Git介绍</a></div>
+    <div class="post-nav"><a href="/posts/git/git%E4%BB%8B%E7%BB%8D/" class="prev" rel="prev" title="Git介绍"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Git介绍</a>
+            <a href="/posts/docker/docker%E7%BD%91%E7%BB%9C/" class="next" rel="next" title="Docker网络">Docker网络<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
