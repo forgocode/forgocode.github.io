@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>所有文章 - forgocode 的博客</title>
+        <link>https://example.com/posts/</link>
+        <description>所有文章 | forgocode 的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>forgocode@163.com (forgocode)</managingEditor>
+            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Fri, 28 Apr 2023 22:51:04 &#43;0800</lastBuildDate><atom:link href="https://example.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>go(一)</title>
+    <link>https://example.com/posts/go/go%E4%B8%80/</link>
+    <pubDate>Fri, 28 Apr 2023 22:51:04 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://example.com/posts/go/go%E4%B8%80/</guid>
+    <description><![CDATA[<p>摘要</p>]]></description>
+</item>
+<item>
+    <title>Hugo安装教程</title>
+    <link>https://example.com/posts/hugo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</link>
+    <pubDate>Fri, 28 Apr 2023 22:51:04 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://example.com/posts/hugo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid>
+    <description><![CDATA[<p>本文主要记录了tmux的安装和使用方式</p>]]></description>
+</item>
+<item>
+    <title>Test</title>
+    <link>https://example.com/posts/test/</link>
+    <pubDate>Fri, 28 Apr 2023 22:24:54 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://example.com/posts/test/</guid>
+    <description><![CDATA[测试 这是一个测试文章]]></description>
+</item>
+</channel>
+</rss>
