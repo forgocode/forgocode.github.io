@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>go(一) - forgocode 的博客</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="go(一)" />
-<meta property="og:description" content="摘要" />
+        <title>Tmux安装教程 - forgocode 的博客</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Tmux安装教程" />
+<meta property="og:description" content="本文主要记录了tmux的安装和使用方式" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://example.com/posts/go/go%E4%B8%80/" /><meta property="og:image" content="https://example.com/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://example.com/posts/tmux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" /><meta property="og:image" content="https://example.com/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-04-28T22:51:04+08:00" />
 <meta property="article:modified_time" content="2023-04-28T22:51:04+08:00" /><meta property="og:site_name" content="LoveIt" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://example.com/logo.png"/>
 
-<meta name="twitter:title" content="go(一)"/>
-<meta name="twitter:description" content="摘要"/>
+<meta name="twitter:title" content="Tmux安装教程"/>
+<meta name="twitter:description" content="本文主要记录了tmux的安装和使用方式"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/posts/go/go%E4%B8%80/" /><link rel="prev" href="https://example.com/posts/tmux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/posts/tmux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" /><link rel="next" href="https://example.com/posts/go/go%E4%B8%80/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "go(一)",
+        "headline": "Tmux安装教程",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/example.com\/posts\/go\/go%E4%B8%80\/"
-        },"genre": "posts","keywords": "golang","wordcount":  4 ,
-        "url": "https:\/\/example.com\/posts\/go\/go%E4%B8%80\/","datePublished": "2023-04-28T22:51:04+08:00","dateModified": "2023-04-28T22:51:04+08:00","publisher": {
+            "@id": "https:\/\/example.com\/posts\/tmux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B\/"
+        },"genre": "posts","keywords": "安装","wordcount":  949 ,
+        "url": "https:\/\/example.com\/posts\/tmux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B\/","datePublished": "2023-04-28T22:51:04+08:00","dateModified": "2023-04-28T22:51:04+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -102,18 +102,80 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">go(一)</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>forgocode</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/golang/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>golang</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-28">2023-04-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 4 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Tmux安装教程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>forgocode</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>软件安装</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-28">2023-04-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 949 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><p>摘要</p>
-<p>正文</p></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#tmux的作用">Tmux的作用</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#前缀键">前缀键</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#新建会话">新建会话</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#会话快捷键">会话快捷键</a></li>
+    <li><a href="#窗口快捷键">窗口快捷键</a></li>
+    <li><a href="#窗格快捷键">窗格快捷键</a></li>
+    <li><a href="#修改前缀键">修改前缀键</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>本文主要记录了tmux的安装和使用方式</p>
+<h1 id="tmux">Tmux</h1>
+<p>命令行的典型使用方式是，打开一个终端窗口（terminal window，以下简称&quot;窗口&quot;），在里面输入命令。用户与计算机的这种临时的交互，称为一次&quot;会话&quot;（session） 。</p>
+<p>会话的一个重要特点是，窗口与其中启动的进程是连在一起的。打开窗口，会话开始；关闭窗口，会话结束，会话内部的进程也会随之终止，不管有没有运行完。</p>
+<p>为了解决这个问题，会话与窗口可以&quot;解绑&quot;：窗口关闭时，会话并不终止，而是继续运行，等到以后需要的时候，再让会话&quot;绑定&quot;其他窗口。</p>
+<h2 id="tmux的作用">Tmux的作用</h2>
+<p>Tmux 就是会话与窗口的&quot;解绑&quot;工具，将它们彻底分离。 - 它允许在单个窗口中，同时访问多个会话。这对于同时运行多个命令行程序很有用。 - 它可以让新窗口&quot;接入&quot;已经存在的会话。 - 它允许每个会话有多个连接窗口，因此可以多人实时共享会话。 - 它还支持窗口任意的垂直和水平拆分。</p>
+<h1 id="tmux的使用">Tmux的使用</h1>
+<h2 id="前缀键">前缀键</h2>
+<p>Tmux 窗口有大量的快捷键。所有快捷键都要通过前缀键唤起。
+我的Tmux前缀键是Ctrl+x，即先按下Ctrl+x ，快捷键才会生效</p>
+<h1 id="会话管理">会话管理</h1>
+<h2 id="新建会话">新建会话</h2>
+<p>第一个启动的 Tmux 窗口，编号是0，第二个窗口的编号是1，以此类推。这些窗口对应的会话，就是 0 号会话、1 号会话。</p>
+<p>使用编号区分会话，不太直观，更好的方法是为会话起名 <code>tmux new -s &lt;sessione name&gt;</code></p>
+<h1 id="快捷键">快捷键</h1>
+<h2 id="会话快捷键">会话快捷键</h2>
+<ol>
+<li>切换回命令行 d（前缀键+d  或者 <code>tmux detch</code>）</li>
+<li>接入某个会话 （tmux attach -t 会话ID/会话名称）</li>
+<li>查看当前所有的会话 （tmux ls /前缀 + s)</li>
+<li>从当前会话切换到另一个会话（tmux switch -t 会话ID/会话名称）</li>
+<li>重命名会话 (tmux rename-session -t 0 会话名称 $重命名当前会话)</li>
+</ol>
+<h2 id="窗口快捷键">窗口快捷键</h2>
+<ol>
+<li>查看所有的窗口 （前缀+w）</li>
+<li>退出窗口 （前缀+c）</li>
+<li>重命名窗口 （前缀+ ,）</li>
+<li>创建新窗口 （前缀+c）</li>
+<li>切换下一个窗口 p，切换上一个窗口 n， 切换指定窗口 编号</li>
+</ol>
+<h2 id="窗格快捷键">窗格快捷键</h2>
+<ol>
+<li>退出窗格（前缀 + c）</li>
+<li>左右两个窗格 （前缀+ %）</li>
+<li>上下两个窗格 （前缀+“）</li>
+<li>光标切换 （前缀+/o）</li>
+<li>窗格交换位置 （前缀+{}）</li>
+<li>窗格移动 （前缀+Ctrl+o）</li>
+<li>窗格变成窗口（前缀+ ！）</li>
+<li>当前窗格全屏显示（前缀+z）</li>
+</ol>
+<h2 id="修改前缀键">修改前缀键</h2>
+<p>在当前用户的根目录下面创建一个.tmux.conf 文件， 文件中添加set -g prefix C-x</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -128,13 +190,14 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/golang/">golang</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%AE%89%E8%A3%85/">安装</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/tmux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="prev" rel="prev" title="Tmux安装教程"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Tmux安装教程</a></div>
+    <div class="post-nav">
+            <a href="/posts/go/go%E4%B8%80/" class="next" rel="next" title="go(一)">go(一)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
