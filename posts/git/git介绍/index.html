@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Git介绍 - forgocode 的博客</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Git介绍" />
+<meta property="og:description" content="本文主要介绍git的基本原理和一些简单的基础操作" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/git/git%E4%BB%8B%E7%BB%8D/" /><meta property="og:image" content="https://example.com/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-30T15:16:40+08:00" />
+<meta property="article:modified_time" content="2023-04-30T15:16:40+08:00" /><meta property="og:site_name" content="LoveIt" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/logo.png"/>
+
+<meta name="twitter:title" content="Git介绍"/>
+<meta name="twitter:description" content="本文主要介绍git的基本原理和一些简单的基础操作"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/posts/git/git%E4%BB%8B%E7%BB%8D/" /><link rel="prev" href="https://example.com/posts/go/go%E4%B8%80/" /><link rel="next" href="https://example.com/posts/docker/docker%E4%BB%8B%E7%BB%8D/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Git介绍",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/example.com\/posts\/git\/git%E4%BB%8B%E7%BB%8D\/"
+        },"genre": "posts","keywords": "Git","wordcount":  1177 ,
+        "url": "https:\/\/example.com\/posts\/git\/git%E4%BB%8B%E7%BB%8D\/","datePublished": "2023-04-30T15:16:40+08:00","dateModified": "2023-04-30T15:16:40+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "forgocode"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="forgocode 的博客"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>forgocode的博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> 首页 </a><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="forgocode 的博客"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>forgocode的博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/" title="">首页</a><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Git介绍</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>forgocode</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-30">2023-04-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1177 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#本地仓库">本地仓库</a>
+      <ul>
+        <li><a href="#第一棵树工作区">“第一棵树”——工作区</a></li>
+        <li><a href="#第二棵树暂存区index">“第二棵树”——暂存区（Index）</a></li>
+        <li><a href="#第三棵树head">“第三棵树”——HEAD</a></li>
+        <li><a href="#合并代码解决冲突">合并代码（解决冲突）</a></li>
+        <li><a href="#简要使用情况说明">简要使用情况说明</a></li>
+      </ul>
+    </li>
+    <li><a href="#远端仓库">远端仓库</a></li>
+    <li><a href="#基本操作">基本操作</a>
+      <ul>
+        <li><a href="#证书相关">证书相关</a></li>
+        <li><a href="#git-config-配置的相关问题">git config 配置的相关问题</a></li>
+        <li><a href="#git-分支相关的问题">git 分支相关的问题</a></li>
+        <li><a href="#git-冲突的相关问题">git 冲突的相关问题</a></li>
+        <li><a href="#git-工作区">git 工作区</a></li>
+        <li><a href="#git-暂存区">git 暂存区</a></li>
+        <li><a href="#git-本地仓库">git 本地仓库</a></li>
+        <li><a href="#git-远端仓库">git 远端仓库</a></li>
+        <li><a href="#git-撤销conmmit">git 撤销conmmit</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>本文主要介绍git的基本原理和一些简单的基础操作</p>
+<h1 id="什么是git">什么是Git</h1>
+<p>Git是一种版本控制系统，方便开发者管理版本内容，同时方便多用户协同工作。不同于svn，它是一种分布式的内容管理系统。同时Git和svn的区别还体现在Git的分支，而svn的分支就是一个单独的目录，也就是说，把主线上的内容拷贝一份就是一个新的分支，单纯对目录的拷贝。对于svn来说，他每一个单独的分支都有，每一次提交之后都会有不同基于全局的版本号，而Git并没有</p>
+<h1 id="git简单介绍">Git简单介绍</h1>
+<p>一般来说，我们使用Git，通常情况下会把本地仓库和远程仓库的内容进行同步</p>
+<h2 id="本地仓库">本地仓库</h2>
+<p>一般来说，Git在本地主要由“三棵树”来维护，第一棵树就是工作区，第二棵树暂存区，第三棵树是HEAD</p>
+<h3 id="第一棵树工作区">“第一棵树”——工作区</h3>
+<p>这里存放的是实际的工作内容</p>
+<h3 id="第二棵树暂存区index">“第二棵树”——暂存区（Index）</h3>
+<h3 id="第三棵树head">“第三棵树”——HEAD</h3>
+<p>他指向你的最后一次提交结果</p>
+<h3 id="合并代码解决冲突">合并代码（解决冲突）</h3>
+<blockquote>
+<p>git stash<br>
+git push orign master<br>
+git stash pop</p>
+</blockquote>
+<h3 id="简要使用情况说明">简要使用情况说明</h3>
+<blockquote>
+<ul>
+<li>首先，可以通过<code>git init</code>或者<code>git clone</code>来创建或者克隆一个仓库到本地，在这个目录下面有一个.git的隐藏文件，在这个文件会保存暂存区的提交。</li>
+<li>然后在本地的仓库目录生成文件或者创建新的目录。此时文件仅仅存在于你的工作区中。</li>
+<li>通过<code>git add &lt;file or directory&gt;</code>把在工作区的文件添加到暂存区中，这事也就意味着，这个目录或者文件开始受到版本管理。</li>
+<li>此时实体文件既保存在工作区也保存在暂存区，但是还没有提交到HEAD。我们可以通过<code>git commit &lt;file or directory&gt;</code>来把暂存区的文件提交到HEAD中。完成提交</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>最后采用<code>git push orign HEAD</code> 就是把HEAD中的文件推送到远端仓库</li>
+</ul>
+</blockquote>
+<h2 id="远端仓库">远端仓库</h2>
+<blockquote>
+<p>TODO:</p>
+</blockquote>
+<h2 id="基本操作">基本操作</h2>
+<h3 id="证书相关">证书相关</h3>
+<blockquote>
+<ol>
+<li>ssh-keygen -t rsa -C &ldquo;<a href="mailto:email@163.com" rel="">email@163.com</a>&rdquo;</li>
+<li>需要执行 ssh -T <a href="mailto:git@github.com" rel="">git@github.com</a> 来认证</li>
+</ol>
+</blockquote>
+<h3 id="git-config-配置的相关问题">git config 配置的相关问题</h3>
+<blockquote>
+<ol>
+<li>git config &ndash;global user.name &ldquo;name&rdquo;</li>
+<li>git config &ndash;global user.email &ldquo;email&rdquo;</li>
+<li>git config &ndash;list 查看所有的config</li>
+<li>git config &ndash;global init.defaultBranch dev git 修改生成的默认分支名</li>
+<li>git config &ndash;global core.eitor vim 配置git的默认编辑器是vim</li>
+</ol>
+</blockquote>
+<h3 id="git-分支相关的问题">git 分支相关的问题</h3>
+<blockquote>
+<ol>
+<li>git branch 查看分支</li>
+<li>git checkout -b &ldquo;name&rdquo; 创建一个新分支并切换到新分支上</li>
+<li>git checkout &ldquo;name&rdquo; 切换分支</li>
+<li>git brach -d &ldquo;name&rdquo; 删除分支</li>
+<li>git merge 源分支 合并分支</li>
+</ol>
+</blockquote>
+<h3 id="git-冲突的相关问题">git 冲突的相关问题</h3>
+<h3 id="git-工作区">git 工作区</h3>
+<blockquote>
+<ol>
+<li>git add filename 添加工作区的目录到暂存区</li>
+<li>git checkout filename 撤销工作区的修改（慎用）,必须要在版本管理之下,如果是新增的文件只能使用rm</li>
+<li>git rm 删除本地文件</li>
+</ol>
+</blockquote>
+<h3 id="git-暂存区">git 暂存区</h3>
+<blockquote>
+<ol>
+<li>git rm &ndash;cached <file> git 删除添加到暂存区的文件</li>
+<li>git reset filename 将暂存区的文件撤销</li>
+<li>git restore &ndash;staged <File> 删除通过git add添加到暂存区的文件，但是保留本地的</li>
+<li>git rm &ndash;cached 工作区被删除，暂存区还保留，恢复到本地</li>
+</ol>
+</blockquote>
+<h3 id="git-本地仓库">git 本地仓库</h3>
+<blockquote>
+<ol>
+<li>git ci -m &ldquo;message&rdquo; 把暂存区的文件提交到本地仓库</li>
+</ol>
+</blockquote>
+<h3 id="git-远端仓库">git 远端仓库</h3>
+<blockquote>
+<ol>
+<li>git init 初始化一个远程仓库</li>
+<li>git remote add origin url 给本地仓库添加远程连接</li>
+<li>git remote set-url origin git更换远程连接地址</li>
+<li>git pull origin <branch> 更新该分支代码</li>
+<li>git push origin <branch> 把本地的改动推送到远端仓库</li>
+</ol>
+</blockquote>
+<h3 id="git-撤销conmmit">git 撤销conmmit</h3>
+<blockquote>
+<p>git reset &ndash;soft HEAD^ 撤销commit，不改动工作区的代码，保留add<br>
+git reset &ndash;hard HEAD^ 删除工作空间的改动代码，撤销commit 撤销add<br>
+git commit -amend 修改本次的commit记录</p>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-04-30</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/git/">Git</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/go/go%E4%B8%80/" class="prev" rel="prev" title="go(一)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>go(一)</a>
+            <a href="/posts/docker/docker%E4%BB%8B%E7%BB%8D/" class="next" rel="next" title="Docker介绍">Docker介绍<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.100.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">forgocode</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

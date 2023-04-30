@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Docker介绍 - forgocode 的博客</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Docker介绍" />
+<meta property="og:description" content="本文主要简单介绍了docker的一些基本概念和基本操作，以及实现方法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/docker/docker%E4%BB%8B%E7%BB%8D/" /><meta property="og:image" content="https://example.com/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-30T18:47:57+08:00" />
+<meta property="article:modified_time" content="2023-04-30T18:47:57+08:00" /><meta property="og:site_name" content="LoveIt" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/logo.png"/>
+
+<meta name="twitter:title" content="Docker介绍"/>
+<meta name="twitter:description" content="本文主要简单介绍了docker的一些基本概念和基本操作，以及实现方法"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/posts/docker/docker%E4%BB%8B%E7%BB%8D/" /><link rel="prev" href="https://example.com/posts/git/git%E4%BB%8B%E7%BB%8D/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Docker介绍",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/example.com\/posts\/docker\/docker%E4%BB%8B%E7%BB%8D\/"
+        },"genre": "posts","keywords": "Docker, 云原生","wordcount":  3478 ,
+        "url": "https:\/\/example.com\/posts\/docker\/docker%E4%BB%8B%E7%BB%8D\/","datePublished": "2023-04-30T18:47:57+08:00","dateModified": "2023-04-30T18:47:57+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "forgocode"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="forgocode 的博客"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>forgocode的博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> 首页 </a><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="forgocode 的博客"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>forgocode的博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/" title="">首页</a><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker介绍</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>forgocode</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/docker/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Docker</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-30">2023-04-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 3478 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#命名空间namespace">命名空间(namespace)</a>
+      <ul>
+        <li><a href="#pid-命名空间">pid 命名空间</a></li>
+        <li><a href="#net-命名空间">net 命名空间</a></li>
+        <li><a href="#ipc-命名空间">ipc 命名空间</a></li>
+        <li><a href="#mnt-命名空间">mnt 命名空间</a></li>
+        <li><a href="#uts-命名空间">uts 命名空间</a></li>
+        <li><a href="#user-命名空间">user 命名空间</a></li>
+      </ul>
+    </li>
+    <li><a href="#cgroup-资源限制">cgroup 资源限制</a></li>
+    <li><a href="#为什么要使用-docker">为什么要使用 Docker</a>
+      <ul>
+        <li><a href="#更高效的利用系统资源">更高效的利用系统资源</a></li>
+        <li><a href="#更快速的启动时间">更快速的启动时间</a></li>
+        <li><a href="#一致的运行环境">一致的运行环境</a></li>
+        <li><a href="#持续交付和部署">持续交付和部署</a></li>
+        <li><a href="#对比传统虚拟机的优势">对比传统虚拟机的优势</a></li>
+      </ul>
+    </li>
+    <li><a href="#docker整体结构">Docker整体结构</a></li>
+    <li><a href="#镜像">镜像</a></li>
+    <li><a href="#容器">容器</a></li>
+    <li><a href="#仓库">仓库</a></li>
+    <li><a href="#docker的常用命令">Docker的常用命令</a>
+      <ul>
+        <li><a href="#对镜像的操作">对镜像的操作</a></li>
+        <li><a href="#对仓库的操作">对仓库的操作</a></li>
+        <li><a href="#对容器的操作">对容器的操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#通过docker-run-启动一个容器发生了什么">通过docker run 启动一个容器，发生了什么</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>本文主要简单介绍了docker的一些基本概念和基本操作，以及实现方法</p>
+<h1 id="什么是docker">什么是docker</h1>
+<p>Docker 使用 Google 公司推出的 Go 语言 进行开发实现，基于 Linux 内核的 cgroup，namespace，以及 OverlayFS 类的 Union FS等技术，对进程进行封装隔离，属于 操作系统层面的虚拟化技术 。由于隔离的进程独立于宿主和其它的隔离的进程，因此也称其为容器。最初实现是基于 LXC ，从 0.7 版本以后开始去除 LXC，转而使用自行开发的 libcontaine，从 1.11 版本开始，则进一步演进为使用 runC和 containerd，runc是一个命令行进程，通过OCI规范创建容器和运行容器。containerd是一个守护进程，它负责来管理容器的生命周期，在一个节点上执行容器和管理镜像的的最小功能集</p>
+<ul>
+<li>
+<p>cgroups，其名称源自控制组群（英语：control groups）的简写，是Linux内核的一个功能，用来限制、控制与分离一个进程组的资源（如CPU、内存、磁盘输入输出等）</p>
+</li>
+<li>
+<p>namespace命名空间是Linux 内核的一个特性，它对内核资源进行分区，使得一组进程看到一组资源，而另一组进程看到一组不同的资源。该功能的工作原理是为一组资源和进程使用相同的命名空间，但这些命名空间引用不同的资源。（8种，mnt，pid，net，ipc，uts，user，cgroup，time）</p>
+</li>
+</ul>
+<h2 id="命名空间namespace">命名空间(namespace)</h2>
+<h3 id="pid-命名空间">pid 命名空间</h3>
+<p>不同用户的进程就是通过 pid 命名空间隔离开的，且不同命名空间中可以有相同 pid。所有的 容器进程在 Docker 中的父进程为 Docker 进程，每个 容器 进程具有不同的命名空间。同时由于允许嵌套，因此可以很方便的实现嵌套的 Docker 容器。</p>
+<h3 id="net-命名空间">net 命名空间</h3>
+<p>有了 pid 命名空间，每个命名空间中的 pid 能够相互隔离，但是网络端口还是共享 host 的端口。网络隔离是通过 net 命名空间实现的， 每个 net 命名空间有独立的 网络设备，IP 地址，路由表，/proc/net 目录。这样每个容器的网络就能隔离开来。Docker 默认采用 veth 的方式，将容器中的虚拟网卡同 host 上的一 个Docker 网桥 docker0 连接在一起。</p>
+<h3 id="ipc-命名空间">ipc 命名空间</h3>
+<p>容器中进程交互还是采用了 Linux 常见的进程间交互方法(interprocess communication - IPC)， 包括信号量、消息队列和共享内存等。但是和 VM 不同的是，容器的进程间交互实际上还是 host 上具有相同 pid 命名空间中的进程间交互，因此需要在 IPC 资源申请时加入命名空间信息，每个 IPC 资源有一个唯一的 32 位 id。</p>
+<h3 id="mnt-命名空间">mnt 命名空间</h3>
+<p>类似 chroot，将一个进程放到一个特定的目录执行。mnt 命名空间允许不同命名空间的进程看到的文件结构不同，这样每个命名空间 中的进程所看到的文件目录就被隔离开了。同 chroot 不同，每个命名空间中的容器在 /proc/mounts 的信息只包含所在命名空间的 mount point。</p>
+<h3 id="uts-命名空间">uts 命名空间</h3>
+<p>UTS(&ldquo;UNIX Time-sharing System&rdquo;) 命名空间允许每个容器拥有独立的 hostname 和 domain name， 使其在网络上可以被视作一个独立的节点而非 主机上的一个进程。</p>
+<h3 id="user-命名空间">user 命名空间</h3>
+<p>每个容器可以有不同的用户和组 id， 也就是说可以在容器内用容器内部的用户执行程序而非主机上的用户。</p>
+<ul>
+<li>
+<p>OverlayFS 是一个现代联合文件系统，类似于 AUFS，但速度更快，实现更简单。Docker 为 OverlayFS 提供了两个存储驱动程序：原始的overlay和更新更稳定的overlay2。联合文件系统（UnionFS）是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下(unite several directories into a single virtual filesystem)。</p>
+<p>联合文件系统是 Docker 镜像的基础。镜像可以通过分层来进行继承，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像。</p>
+<p>另外，不同 Docker 容器就可以共享一些基础的文件系统层，同时再加上自己独有的改动层，大大提高了存储的效率。</p>
+<p>Docker 中使用的 AUFS（Advanced Multi-Layered Unification Filesystem）就是一种联合文件系统。 <code>AUFS</code> 支持为每一个成员目录（类似 Git 的分支）设定只读（readonly）、读写（readwrite）和写出（whiteout-able）权限, 同时 <code>AUFS</code> 里有一个类似分层的概念, 对只读权限的分支可以逻辑上进行增量地修改(不影响只读部分的)。</p>
+</li>
+<li>
+<p>runc 是一个 CLI 工具，用于根据 OCI 规范在 Linux 上生成和运行容器</p>
+</li>
+<li>
+<p>containerd 就会负责集群节点上容器的生命周期管理，并向上为 Docker Daemon 提供 gRPC 接口。他可以管理其主机系统的完整容器生命周期：镜像传输和存储、容器执行和监督、低级存储和网络附件等。</p>
+</li>
+</ul>
+<h2 id="cgroup-资源限制">cgroup 资源限制</h2>
+<blockquote>
+<p>TODO:</p>
+</blockquote>
+<h2 id="为什么要使用-docker">为什么要使用 Docker</h2>
+<h3 id="更高效的利用系统资源">更高效的利用系统资源</h3>
+<p>由于容器不需要进行硬件虚拟以及运行完整操作系统等额外开销，<code>Docker</code> 对系统资源的利用率更高。无论是应用执行速度、内存损耗或者文件存储速度，都要比传统虚拟机技术更高效。因此，相比虚拟机技术，一个相同配置的主机，往往可以运行更多数量的应用。</p>
+<h3 id="更快速的启动时间">更快速的启动时间</h3>
+<p>传统的虚拟机技术启动应用服务往往需要数分钟，而 <code>Docker</code> 容器应用，由于直接运行于宿主内核，无需启动完整的操作系统，因此可以做到秒级、甚至毫秒级的启动时间。大大的节约了开发、测试、部署的时间。</p>
+<h3 id="一致的运行环境">一致的运行环境</h3>
+<p>开发过程中一个常见的问题是环境一致性问题。由于开发环境、测试环境、生产环境不一致，导致有些 bug 并未在开发过程中被发现。而 <code>Docker</code> 的镜像提供了除内核外完整的运行时环境，确保了应用运行环境一致性。</p>
+<h3 id="持续交付和部署">持续交付和部署</h3>
+<p>使用 Docker 可以通过定制应用镜像来实现持续集成、持续交付、部署。开发人员可以通过 Dockerfile 来进行镜像构建，并结合 持续集成(Continuous Integration) (opens new window)系统进行集成测试，而运维人员则可以直接在生产环境中快速部署该镜像，甚至结合 持续部署(Continuous Delivery/Deployment) (opens new window)系统进行自动部署</p>
+<h3 id="对比传统虚拟机的优势">对比传统虚拟机的优势</h3>
+<table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>容器</strong></th>
+<th><strong>虚拟机</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>启动</td>
+<td>秒级</td>
+<td>分钟级</td>
+</tr>
+<tr>
+<td>硬盘使用</td>
+<td>一般为 <code>MB</code></td>
+<td>一般为 <code>GB</code></td>
+</tr>
+<tr>
+<td>性能</td>
+<td>接近原生</td>
+<td>弱于</td>
+</tr>
+<tr>
+<td>系统支持量</td>
+<td>单机支持上千个容器</td>
+<td>一般几十个</td>
+</tr>
+</tbody>
+</table>
+<h2 id="docker整体结构">Docker整体结构</h2>
+<p>先了解一下docker三个比较重要的概念：</p>
+<h2 id="镜像">镜像</h2>
+<p>操作系统分为 内核 和 用户空间。对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root 文件系统。除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像 不包含 任何动态数据，其内容在构建之后也不会被改变。由一组文件系统组成，或者说，由多层文件系统联合组成。</p>
+<h2 id="容器">容器</h2>
+<p>镜像（Image）和容器（Container）的关系，就像是面向对象中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
+<p>容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间，就是在一个封闭独立的环境中。</p>
+<p>每一个容器运行时，是以镜像为基础层，在其上创建一个当前容器的存储层，我们可以称这个为容器运行时读写而准备的存储层为 容器存储层。</p>
+<p>容器存储层的生存周期和容器一样，容器消亡时，容器存储层也随之消亡。因此，任何保存于容器存储层的信息都会随容器删除而丢失。</p>
+<p>containerd-shim存在的必要性</p>
+<p>docker是怎么删掉的</p>
+<h2 id="仓库">仓库</h2>
+<p>镜像构建完成后，可以很容易的在当前宿主机上运行，但是，如果需要在其它服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务，Docker Registry 就是这样的服务</p>
+<p>容器的启动流程如下：</p>
+<ol>
+<li>
+<p>通过命令行和docker的守护进程交互，来对容器操作</p>
+</li>
+<li>
+<p>当docker-daemon收到消息之后来请求containerd来帮我们创建容器</p>
+</li>
+<li>
+<p>Containerd也不直接操作容器，先创建一个containerd-shim的进程。这个进程就是负责收集容器状态，容器的输入输出，异常（stdin），上报给containerd。</p>
+</li>
+<li>
+<p>Runc是containerd-shim启动的一个进程，这个进程负责创建一个符合oci规范的容器，创建完就会退出，接下来起来的这个容器就会被containerd-shim接管。</p>
+</li>
+</ol>
+<h2 id="docker的常用命令">Docker的常用命令</h2>
+<h3 id="对镜像的操作">对镜像的操作</h3>
+<p>Docker rmi 删除镜像</p>
+<p>Docker load -i 加载镜像</p>
+<p>Docker tag 给镜像打标记</p>
+<p>docker build -tag &ndash;rm</p>
+<h3 id="对仓库的操作">对仓库的操作</h3>
+<p>docker login</p>
+<p>docker push</p>
+<p>docker pull</p>
+<h3 id="对容器的操作">对容器的操作</h3>
+<p>docker exec/ attach -itd -v &ndash;name -p &ndash;network</p>
+<p>-t 给容器分配一个伪终端绑定到容器上，-i 容器的标准输入打开 -d 守护态运行，运行在后台</p>
+<p>docker logs</p>
+<p>docker stats</p>
+<p>docker inspect</p>
+<p>docker rm/ stop/ start/ restart /</p>
+<p>docker events</p>
+<h2 id="通过docker-run-启动一个容器发生了什么">通过docker run 启动一个容器，发生了什么</h2>
+<ul>
+<li>检查本地是否存在指定的镜像，不存在就从仓库下载</li>
+<li>利用镜像创建并启动一个容器</li>
+<li>分配一个文件系统，并在只读的镜像层外面挂载一层可读写层</li>
+<li>从宿主主机配置的网桥接口中桥接一个虚拟接口到容器中去</li>
+<li>从地址池配置一个 ip 地址给容器</li>
+<li>执行用户指定的应用程序</li>
+<li>执行完毕后容器被终止</li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-04-30</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/docker/">Docker</a>,&nbsp;<a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/git/git%E4%BB%8B%E7%BB%8D/" class="prev" rel="prev" title="Git介绍"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Git介绍</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.100.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">forgocode</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

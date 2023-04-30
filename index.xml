@@ -4,9 +4,25 @@
         <link>https://example.com/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>forgocode@163.com (forgocode)</managingEditor>
-            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Fri, 28 Apr 2023 22:51:04 &#43;0800</lastBuildDate>
+            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Sun, 30 Apr 2023 18:47:57 &#43;0800</lastBuildDate>
             <atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Docker介绍</title>
+    <link>https://example.com/posts/docker/docker%E4%BB%8B%E7%BB%8D/</link>
+    <pubDate>Sun, 30 Apr 2023 18:47:57 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://example.com/posts/docker/docker%E4%BB%8B%E7%BB%8D/</guid>
+    <description><![CDATA[<p>本文主要简单介绍了docker的一些基本概念和基本操作，以及实现方法</p>]]></description>
+</item>
+<item>
+    <title>Git介绍</title>
+    <link>https://example.com/posts/git/git%E4%BB%8B%E7%BB%8D/</link>
+    <pubDate>Sun, 30 Apr 2023 15:16:40 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://example.com/posts/git/git%E4%BB%8B%E7%BB%8D/</guid>
+    <description><![CDATA[<p>本文主要介绍git的基本原理和一些简单的基础操作</p>]]></description>
+</item>
+<item>
     <title>go(一)</title>
     <link>https://example.com/posts/go/go%E4%B8%80/</link>
     <pubDate>Fri, 28 Apr 2023 22:51:04 &#43;0800</pubDate>
