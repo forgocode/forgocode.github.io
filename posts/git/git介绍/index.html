@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/example.com\/posts\/git\/git%E4%BB%8B%E7%BB%8D\/"
-        },"genre": "posts","keywords": "Git","wordcount":  1177 ,
+        },"genre": "posts","keywords": "Git","wordcount":  1173 ,
         "url": "https:\/\/example.com\/posts\/git\/git%E4%BB%8B%E7%BB%8D\/","datePublished": "2023-04-30T15:16:40+08:00","dateModified": "2023-04-30T15:16:40+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -104,7 +104,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Git介绍</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>forgocode</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/git/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Git</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-30">2023-04-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1177 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-30">2023-04-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1173 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -113,22 +113,26 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#本地仓库">本地仓库</a>
+    <li><a href="#什么是git">什么是Git</a></li>
+    <li><a href="#git简单介绍">Git简单介绍</a>
       <ul>
-        <li><a href="#第一棵树工作区">“第一棵树”——工作区</a></li>
-        <li><a href="#第二棵树暂存区index">“第二棵树”——暂存区（Index）</a></li>
-        <li><a href="#第三棵树head">“第三棵树”——HEAD</a></li>
-        <li><a href="#合并代码解决冲突">合并代码（解决冲突）</a></li>
-        <li><a href="#简要使用情况说明">简要使用情况说明</a></li>
+        <li><a href="#本地仓库">本地仓库</a>
+          <ul>
+            <li><a href="#第一棵树工作区">“第一棵树”——工作区</a></li>
+            <li><a href="#第二棵树暂存区index">“第二棵树”——暂存区（Index）</a></li>
+            <li><a href="#第三棵树head">“第三棵树”——HEAD</a></li>
+            <li><a href="#简要使用情况说明">简要使用情况说明</a></li>
+          </ul>
+        </li>
+        <li><a href="#远端仓库">远端仓库</a></li>
       </ul>
     </li>
-    <li><a href="#远端仓库">远端仓库</a></li>
     <li><a href="#基本操作">基本操作</a>
       <ul>
         <li><a href="#证书相关">证书相关</a></li>
         <li><a href="#git-config-配置的相关问题">git config 配置的相关问题</a></li>
         <li><a href="#git-分支相关的问题">git 分支相关的问题</a></li>
-        <li><a href="#git-冲突的相关问题">git 冲突的相关问题</a></li>
+        <li><a href="#git-冲突的相关问题合并代码">git 冲突的相关问题（合并代码）</a></li>
         <li><a href="#git-工作区">git 工作区</a></li>
         <li><a href="#git-暂存区">git 暂存区</a></li>
         <li><a href="#git-本地仓库">git 本地仓库</a></li>
@@ -139,24 +143,18 @@
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>本文主要介绍git的基本原理和一些简单的基础操作</p>
-<h1 id="什么是git">什么是Git</h1>
+<h2 id="什么是git">什么是Git</h2>
 <p>Git是一种版本控制系统，方便开发者管理版本内容，同时方便多用户协同工作。不同于svn，它是一种分布式的内容管理系统。同时Git和svn的区别还体现在Git的分支，而svn的分支就是一个单独的目录，也就是说，把主线上的内容拷贝一份就是一个新的分支，单纯对目录的拷贝。对于svn来说，他每一个单独的分支都有，每一次提交之后都会有不同基于全局的版本号，而Git并没有</p>
-<h1 id="git简单介绍">Git简单介绍</h1>
+<h2 id="git简单介绍">Git简单介绍</h2>
 <p>一般来说，我们使用Git，通常情况下会把本地仓库和远程仓库的内容进行同步</p>
-<h2 id="本地仓库">本地仓库</h2>
+<h3 id="本地仓库">本地仓库</h3>
 <p>一般来说，Git在本地主要由“三棵树”来维护，第一棵树就是工作区，第二棵树暂存区，第三棵树是HEAD</p>
-<h3 id="第一棵树工作区">“第一棵树”——工作区</h3>
+<h4 id="第一棵树工作区">“第一棵树”——工作区</h4>
 <p>这里存放的是实际的工作内容</p>
-<h3 id="第二棵树暂存区index">“第二棵树”——暂存区（Index）</h3>
-<h3 id="第三棵树head">“第三棵树”——HEAD</h3>
+<h4 id="第二棵树暂存区index">“第二棵树”——暂存区（Index）</h4>
+<h4 id="第三棵树head">“第三棵树”——HEAD</h4>
 <p>他指向你的最后一次提交结果</p>
-<h3 id="合并代码解决冲突">合并代码（解决冲突）</h3>
-<blockquote>
-<p>git stash<br>
-git push orign master<br>
-git stash pop</p>
-</blockquote>
-<h3 id="简要使用情况说明">简要使用情况说明</h3>
+<h4 id="简要使用情况说明">简要使用情况说明</h4>
 <blockquote>
 <ul>
 <li>首先，可以通过<code>git init</code>或者<code>git clone</code>来创建或者克隆一个仓库到本地，在这个目录下面有一个.git的隐藏文件，在这个文件会保存暂存区的提交。</li>
@@ -170,7 +168,7 @@ git stash pop</p>
 <li>最后采用<code>git push orign HEAD</code> 就是把HEAD中的文件推送到远端仓库</li>
 </ul>
 </blockquote>
-<h2 id="远端仓库">远端仓库</h2>
+<h3 id="远端仓库">远端仓库</h3>
 <blockquote>
 <p>TODO:</p>
 </blockquote>
@@ -202,7 +200,12 @@ git stash pop</p>
 <li>git merge 源分支 合并分支</li>
 </ol>
 </blockquote>
-<h3 id="git-冲突的相关问题">git 冲突的相关问题</h3>
+<h3 id="git-冲突的相关问题合并代码">git 冲突的相关问题（合并代码）</h3>
+<blockquote>
+<p>git stash<br>
+git push orign master<br>
+git stash pop</p>
+</blockquote>
 <h3 id="git-工作区">git 工作区</h3>
 <blockquote>
 <ol>

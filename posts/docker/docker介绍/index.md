@@ -5,7 +5,7 @@
 
 <!--more-->
 
-# 什么是docker
+## 什么是docker
 
 Docker 使用 Google 公司推出的 Go 语言 进行开发实现，基于 Linux 内核的 cgroup，namespace，以及 OverlayFS 类的 Union FS等技术，对进程进行封装隔离，属于 操作系统层面的虚拟化技术 。由于隔离的进程独立于宿主和其它的隔离的进程，因此也称其为容器。最初实现是基于 LXC ，从 0.7 版本以后开始去除 LXC，转而使用自行开发的 libcontaine，从 1.11 版本开始，则进一步演进为使用 runC和 containerd，runc是一个命令行进程，通过OCI规范创建容器和运行容器。containerd是一个守护进程，它负责来管理容器的生命周期，在一个节点上执行容器和管理镜像的的最小功能集
 

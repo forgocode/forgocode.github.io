@@ -19,7 +19,7 @@
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/posts/docker/docker%E6%95%B0%E6%8D%AE%E5%8D%B7/" /><link rel="prev" href="https://example.com/posts/docker/docker%E7%BD%91%E7%BB%9C/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/posts/docker/docker%E6%95%B0%E6%8D%AE%E5%8D%B7/" /><link rel="prev" href="https://example.com/posts/docker/docker%E7%BD%91%E7%BB%9C/" /><link rel="next" href="https://example.com/posts/docker/dockerfile%E4%BB%8B%E7%BB%8D/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -113,6 +113,7 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
+    <li><a href="#数据管理方式">数据管理方式</a></li>
     <li><a href="#数据卷">数据卷</a>
       <ul>
         <li><a href="#创建一个数据卷">创建一个数据卷</a></li>
@@ -131,7 +132,7 @@
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>本文主要简单介绍了docker的数据持久化的方式，数据源和挂载主机目录</p>
-<h1 id="数据管理方式">数据管理方式</h1>
+<h2 id="数据管理方式">数据管理方式</h2>
 <p>前面提到了启动容器实际上是静态层上面加了一层可读写层，但是如果我们对这个层进行读写，数据并不能固化，也保存不下来。所以为了保存数据，有下面两种方式来管理数据的保存。</p>
 <h2 id="数据卷">数据卷</h2>
 <p><code>数据卷</code> 是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：</p>
@@ -405,7 +406,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/docker/docker%E7%BD%91%E7%BB%9C/" class="prev" rel="prev" title="Docker网络"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Docker网络</a></div>
+    <div class="post-nav"><a href="/posts/docker/docker%E7%BD%91%E7%BB%9C/" class="prev" rel="prev" title="Docker网络"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Docker网络</a>
+            <a href="/posts/docker/dockerfile%E4%BB%8B%E7%BB%8D/" class="next" rel="next" title="Dockerfile介绍">Dockerfile介绍<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
