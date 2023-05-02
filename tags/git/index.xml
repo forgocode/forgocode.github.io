@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Git - 标签 - forgocode 的博客</title>
-        <link>https://example.com/tags/git/</link>
+        <link>https://blog.rguo.top/tags/git/</link>
         <description>Git - 标签 - forgocode 的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>forgocode@163.com (forgocode)</managingEditor>
-            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Sun, 30 Apr 2023 15:16:40 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/git/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Sun, 30 Apr 2023 15:16:40 &#43;0800</lastBuildDate><atom:link href="https://blog.rguo.top/tags/git/" rel="self" type="application/rss+xml" /><item>
     <title>Git介绍</title>
-    <link>https://example.com/posts/git/git%E4%BB%8B%E7%BB%8D/</link>
+    <link>https://blog.rguo.top/posts/git/git%E4%BB%8B%E7%BB%8D/</link>
     <pubDate>Sun, 30 Apr 2023 15:16:40 &#43;0800</pubDate>
     <author>forgocode</author>
-    <guid>https://example.com/posts/git/git%E4%BB%8B%E7%BB%8D/</guid>
+    <guid>https://blog.rguo.top/posts/git/git%E4%BB%8B%E7%BB%8D/</guid>
     <description><![CDATA[<p>本文主要介绍git的基本原理和一些简单的基础操作</p>]]></description>
 </item>
 </channel>
