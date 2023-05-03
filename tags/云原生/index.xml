@@ -4,7 +4,15 @@
         <link>https://blog.rguo.top/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</link>
         <description>云原生 - 标签 - forgocode 的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>forgocode@163.com (forgocode)</managingEditor>
-            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Tue, 02 May 2023 16:22:11 &#43;0800</lastBuildDate><atom:link href="https://blog.rguo.top/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Wed, 03 May 2023 11:45:27 &#43;0800</lastBuildDate><atom:link href="https://blog.rguo.top/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" rel="self" type="application/rss+xml" /><item>
+    <title>Docker_overlay2</title>
+    <link>https://blog.rguo.top/posts/docker/docker_overlay2/</link>
+    <pubDate>Wed, 03 May 2023 11:45:27 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://blog.rguo.top/posts/docker/docker_overlay2/</guid>
+    <description><![CDATA[<p>本文主要介绍了docker的UnionFS（联合文件系统）的解决方案-overlay2</p>]]></description>
+</item>
+<item>
     <title>Kubernetes网络插件</title>
     <link>https://blog.rguo.top/posts/kubernetes/kubernetes%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6/</link>
     <pubDate>Tue, 02 May 2023 16:22:11 &#43;0800</pubDate>

@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Kubernetes网络插件 - forgocode 的博客</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Kubernetes网络插件" />
-<meta property="og:description" content="本文主要介绍k8s使用的经常使用的网络插件，以及基本原理。" />
+        <title>Docker_overlay2 - forgocode 的博客</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Docker_overlay2" />
+<meta property="og:description" content="本文主要介绍了docker的UnionFS（联合文件系统）的解决方案-overlay2" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.rguo.top/posts/kubernetes/kubernetes%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6/" /><meta property="og:image" content="https://blog.rguo.top/images/avatar.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-05-02T16:22:11+08:00" />
-<meta property="article:modified_time" content="2023-05-02T16:22:11+08:00" /><meta property="og:site_name" content="LoveIt" />
+<meta property="og:url" content="https://blog.rguo.top/posts/docker/docker_overlay2/" /><meta property="og:image" content="https://blog.rguo.top/images/avatar.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-03T11:45:27+08:00" />
+<meta property="article:modified_time" content="2023-05-03T15:31:50+08:00" /><meta property="og:site_name" content="LoveIt" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.rguo.top/images/avatar.jpg"/>
 
-<meta name="twitter:title" content="Kubernetes网络插件"/>
-<meta name="twitter:description" content="本文主要介绍k8s使用的经常使用的网络插件，以及基本原理。"/>
+<meta name="twitter:title" content="Docker_overlay2"/>
+<meta name="twitter:description" content="本文主要介绍了docker的UnionFS（联合文件系统）的解决方案-overlay2"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.rguo.top/posts/kubernetes/kubernetes%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6/" /><link rel="prev" href="https://blog.rguo.top/posts/kubernetes/kubernetes%E4%BB%8B%E7%BB%8D/" /><link rel="next" href="https://blog.rguo.top/posts/%E7%BD%91%E7%BB%9C/iptables/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.rguo.top/posts/docker/docker_overlay2/" /><link rel="prev" href="https://blog.rguo.top/posts/%E7%BD%91%E7%BB%9C/iptables/" /><link rel="next" href="https://blog.rguo.top/posts/linux/cgroup%E4%BB%8B%E7%BB%8D/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Kubernetes网络插件",
+        "headline": "Docker_overlay2",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.rguo.top\/posts\/kubernetes\/kubernetes%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6\/"
-        },"genre": "posts","keywords": "Kubernetes, 云原生","wordcount":  178 ,
-        "url": "https:\/\/blog.rguo.top\/posts\/kubernetes\/kubernetes%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6\/","datePublished": "2023-05-02T16:22:11+08:00","dateModified": "2023-05-02T16:22:11+08:00","publisher": {
+            "@id": "https:\/\/blog.rguo.top\/posts\/docker\/docker_overlay2\/"
+        },"genre": "posts","keywords": "Docker, 云原生","wordcount":  754 ,
+        "url": "https:\/\/blog.rguo.top\/posts\/docker\/docker_overlay2\/","datePublished": "2023-05-03T11:45:27+08:00","dateModified": "2023-05-03T15:31:50+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -102,10 +102,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Kubernetes网络插件</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>forgocode</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Kubernetes</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-02">2023-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 178 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker_overlay2</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>forgocode</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/docker/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Docker</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-03">2023-05-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 754 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -113,32 +113,49 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#flannel">flannel</a>
+    <li><a href="#发展历程">发展历程</a></li>
+    <li><a href="#使用overlay2的条件">使用overlay2的条件</a>
       <ul>
-        <li><a href="#三种网络模式">三种网络模式</a></li>
+        <li><a href="#docker版本高于170602">Docker版本高于17.06.02</a></li>
+        <li><a href="#linux版本">Linux版本</a></li>
+      </ul>
+    </li>
+    <li><a href="#overlay2-工作原理">overlay2 工作原理</a></li>
+    <li><a href="#overlay2如何读取修改删除文件">overlay2如何读取，修改，删除文件</a>
+      <ul>
+        <li><a href="#读取文件">读取文件</a></li>
+        <li><a href="#修改文件">修改文件</a></li>
+        <li><a href="#删除文件">删除文件</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>本文主要介绍k8s使用的经常使用的网络插件，以及基本原理。</p>
-<h2 id="flannel">flannel</h2>
-<h3 id="三种网络模式">三种网络模式</h3>
-<ol>
-<li>
-<p>udp（性能很差）</p>
-</li>
-<li>
-<p>vxlan（性能一般，常用）</p>
-</li>
-<li>
-<p>host-gw（性能最好）
-howt-gw模式的工作原理，就是将每个Flannel子网的下一跳，设置成了该子网对应的宿主机的IP地址，也就是说，宿主机（host）充当了这条容器通信路径的“网关”（Gateway），这正是host-gw的含义</p>
-</li>
-</ol></div><div class="post-footer" id="post-footer">
+            </div><div class="content" id="content"><p>本文主要介绍了docker的UnionFS（联合文件系统）的解决方案-overlay2</p>
+<h2 id="发展历程">发展历程</h2>
+<p>docker在最开始的时候使用的是AUFS和DeviceMapper作为联合文件系统的驱动。在内核3.18中，linux引入了overlay，Docker此时开始使用overlay作为UnionFS的解决方案。但由于第一代的overlay存在很多弊端，比如在运行一段时间之后，docker会报too many links perblem的错误，所以在内核4.0的时候对overlay做了很多必要的改进。此时的overlayFS 被称为overlay2.</p>
+<h2 id="使用overlay2的条件">使用overlay2的条件</h2>
+<h3 id="docker版本高于170602">Docker版本高于17.06.02</h3>
+<h3 id="linux版本">Linux版本</h3>
+<p>如果是Centos/RHEL，linux内核必须高于3.10.0-54。其他发行版本内核必须高于4.0</p>
+<h2 id="overlay2-工作原理">overlay2 工作原理</h2>
+<p>overlay2和AUFS类似，他把所有的目录都称为层（layer），overlay2的目录是容器和进行镜像分层的基础，把这些层统一展现到一层的过程叫做联合挂载（union mount）。overlay2把目录的下一层称为lowerdir，上一层叫做upperdir，联合挂载后的目录叫做merged。</p>
+<blockquote>
+<p>简单来讲，overlay2在每一层只存储改动的文件，记录上下层之间的关系，构造镜像/容器的时候，执行联合挂载，在容器中看到完整的系统文件<br>
+overlay2文件系统最多支持128层文件挂载</p>
+</blockquote>
+<h2 id="overlay2如何读取修改删除文件">overlay2如何读取，修改，删除文件</h2>
+<p>主要用到了写时复制技术（copy-on-write）</p>
+<h3 id="读取文件">读取文件</h3>
+<p>读取文件的时候先从容器层（可读写层）查找，如果没找到，就从镜像层（只读层）复制一份到容器层。</p>
+<h3 id="修改文件">修改文件</h3>
+<p>直接修改容器层中复制过来的文件</p>
+<h3 id="删除文件">删除文件</h3>
+<p>删除容器层的文件，然后将只读层对应的文件置为不可访问，并没有真正删除该文件</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-05-02</span>
+                <span>更新于 2023-05-03&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/e54238a2708c458d52f899bbe72f284cf8b86b20" target="_blank" title="commit by forgocode(forgocode@163.com) e54238a2708c458d52f899bbe72f284cf8b86b20: Add note">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>e54238a</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -149,14 +166,14 @@ howt-gw模式的工作原理，就是将每个Flannel子网的下一跳，设置
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/kubernetes/">Kubernetes</a>,&nbsp;<a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/docker/">Docker</a>,&nbsp;<a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/kubernetes/kubernetes%E4%BB%8B%E7%BB%8D/" class="prev" rel="prev" title="Kubernetes介绍（一）"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Kubernetes介绍（一）</a>
-            <a href="/posts/%E7%BD%91%E7%BB%9C/iptables/" class="next" rel="next" title="Iptables">Iptables<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E7%BD%91%E7%BB%9C/iptables/" class="prev" rel="prev" title="Iptables"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Iptables</a>
+            <a href="/posts/linux/cgroup%E4%BB%8B%E7%BB%8D/" class="next" rel="next" title="Cgroup介绍">Cgroup介绍<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

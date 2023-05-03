@@ -4,7 +4,15 @@
         <link>https://blog.rguo.top/tags/docker/</link>
         <description>Docker - 标签 - forgocode 的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>forgocode@163.com (forgocode)</managingEditor>
-            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Tue, 02 May 2023 15:53:13 &#43;0800</lastBuildDate><atom:link href="https://blog.rguo.top/tags/docker/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Wed, 03 May 2023 11:45:27 &#43;0800</lastBuildDate><atom:link href="https://blog.rguo.top/tags/docker/" rel="self" type="application/rss+xml" /><item>
+    <title>Docker_overlay2</title>
+    <link>https://blog.rguo.top/posts/docker/docker_overlay2/</link>
+    <pubDate>Wed, 03 May 2023 11:45:27 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://blog.rguo.top/posts/docker/docker_overlay2/</guid>
+    <description><![CDATA[<p>本文主要介绍了docker的UnionFS（联合文件系统）的解决方案-overlay2</p>]]></description>
+</item>
+<item>
     <title>Dockerfile介绍</title>
     <link>https://blog.rguo.top/posts/docker/dockerfile%E4%BB%8B%E7%BB%8D/</link>
     <pubDate>Tue, 02 May 2023 15:53:13 &#43;0800</pubDate>

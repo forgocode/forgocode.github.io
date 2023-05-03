@@ -4,7 +4,47 @@
         <link>https://blog.rguo.top/posts/</link>
         <description>所有文章 | forgocode 的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>forgocode@163.com (forgocode)</managingEditor>
-            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Tue, 02 May 2023 16:22:11 &#43;0800</lastBuildDate><atom:link href="https://blog.rguo.top/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Wed, 03 May 2023 14:53:44 &#43;0800</lastBuildDate><atom:link href="https://blog.rguo.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Vim网页浏览</title>
+    <link>https://blog.rguo.top/posts/vim/vim%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88/</link>
+    <pubDate>Wed, 03 May 2023 14:53:44 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://blog.rguo.top/posts/vim/vim%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88/</guid>
+    <description><![CDATA[<p>本文主要记录了在网页中使用vim的快捷键（根据需求来），使用插件surfingkeys实现</p>]]></description>
+</item>
+<item>
+    <title>Vim编辑器</title>
+    <link>https://blog.rguo.top/posts/vim/vim%E7%BC%96%E8%BE%91%E5%99%A8/</link>
+    <pubDate>Wed, 03 May 2023 14:53:36 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://blog.rguo.top/posts/vim/vim%E7%BC%96%E8%BE%91%E5%99%A8/</guid>
+    <description><![CDATA[<p>本文主要记录了使用vim的一些快捷键，随用随记。</p>]]></description>
+</item>
+<item>
+    <title>Cgroup介绍</title>
+    <link>https://blog.rguo.top/posts/linux/cgroup%E4%BB%8B%E7%BB%8D/</link>
+    <pubDate>Wed, 03 May 2023 12:25:17 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://blog.rguo.top/posts/linux/cgroup%E4%BB%8B%E7%BB%8D/</guid>
+    <description><![CDATA[<p>本文主要介绍了cgroup的概念，以及机制</p>]]></description>
+</item>
+<item>
+    <title>Docker_overlay2</title>
+    <link>https://blog.rguo.top/posts/docker/docker_overlay2/</link>
+    <pubDate>Wed, 03 May 2023 11:45:27 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://blog.rguo.top/posts/docker/docker_overlay2/</guid>
+    <description><![CDATA[<p>本文主要介绍了docker的UnionFS（联合文件系统）的解决方案-overlay2</p>]]></description>
+</item>
+<item>
+    <title>Iptables</title>
+    <link>https://blog.rguo.top/posts/%E7%BD%91%E7%BB%9C/iptables/</link>
+    <pubDate>Tue, 02 May 2023 16:43:20 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://blog.rguo.top/posts/%E7%BD%91%E7%BB%9C/iptables/</guid>
+    <description><![CDATA[<p>本文主要介绍了iptables的相关知识</p>]]></description>
+</item>
+<item>
     <title>Kubernetes网络插件</title>
     <link>https://blog.rguo.top/posts/kubernetes/kubernetes%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6/</link>
     <pubDate>Tue, 02 May 2023 16:22:11 &#43;0800</pubDate>
@@ -43,38 +83,6 @@
     <author>forgocode</author>
     <guid>https://blog.rguo.top/posts/docker/docker%E7%BD%91%E7%BB%9C/</guid>
     <description><![CDATA[<p>本文主要介绍了docker相关的网络，网络模式，如何对外暴露服务</p>]]></description>
-</item>
-<item>
-    <title>Docker介绍</title>
-    <link>https://blog.rguo.top/posts/docker/docker%E4%BB%8B%E7%BB%8D/</link>
-    <pubDate>Sun, 30 Apr 2023 18:47:57 &#43;0800</pubDate>
-    <author>forgocode</author>
-    <guid>https://blog.rguo.top/posts/docker/docker%E4%BB%8B%E7%BB%8D/</guid>
-    <description><![CDATA[<p>本文主要简单介绍了docker的一些基本概念和基本操作，以及实现方法</p>]]></description>
-</item>
-<item>
-    <title>Git介绍</title>
-    <link>https://blog.rguo.top/posts/git/git%E4%BB%8B%E7%BB%8D/</link>
-    <pubDate>Sun, 30 Apr 2023 15:16:40 &#43;0800</pubDate>
-    <author>forgocode</author>
-    <guid>https://blog.rguo.top/posts/git/git%E4%BB%8B%E7%BB%8D/</guid>
-    <description><![CDATA[<p>本文主要介绍git的基本原理和一些简单的基础操作</p>]]></description>
-</item>
-<item>
-    <title>go(一)</title>
-    <link>https://blog.rguo.top/posts/go/go%E4%B8%80/</link>
-    <pubDate>Fri, 28 Apr 2023 22:51:04 &#43;0800</pubDate>
-    <author>forgocode</author>
-    <guid>https://blog.rguo.top/posts/go/go%E4%B8%80/</guid>
-    <description><![CDATA[<p>摘要</p>]]></description>
-</item>
-<item>
-    <title>Tmux安装教程</title>
-    <link>https://blog.rguo.top/posts/tmux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</link>
-    <pubDate>Fri, 28 Apr 2023 22:51:04 &#43;0800</pubDate>
-    <author>forgocode</author>
-    <guid>https://blog.rguo.top/posts/tmux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid>
-    <description><![CDATA[<p>本文主要记录了tmux的安装和使用方式</p>]]></description>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux - 标签 - forgocode 的博客</title>
+        <link>https://blog.rguo.top/tags/linux/</link>
+        <description>Linux - 标签 - forgocode 的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>forgocode@163.com (forgocode)</managingEditor>
+            <webMaster>forgocode@163.com (forgocode)</webMaster><lastBuildDate>Wed, 03 May 2023 14:53:36 &#43;0800</lastBuildDate><atom:link href="https://blog.rguo.top/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Vim编辑器</title>
+    <link>https://blog.rguo.top/posts/vim/vim%E7%BC%96%E8%BE%91%E5%99%A8/</link>
+    <pubDate>Wed, 03 May 2023 14:53:36 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://blog.rguo.top/posts/vim/vim%E7%BC%96%E8%BE%91%E5%99%A8/</guid>
+    <description><![CDATA[<p>本文主要记录了使用vim的一些快捷键，随用随记。</p>]]></description>
+</item>
+<item>
+    <title>Cgroup介绍</title>
+    <link>https://blog.rguo.top/posts/linux/cgroup%E4%BB%8B%E7%BB%8D/</link>
+    <pubDate>Wed, 03 May 2023 12:25:17 &#43;0800</pubDate>
+    <author>forgocode</author>
+    <guid>https://blog.rguo.top/posts/linux/cgroup%E4%BB%8B%E7%BB%8D/</guid>
+    <description><![CDATA[<p>本文主要介绍了cgroup的概念，以及机制</p>]]></description>
+</item>
+</channel>
+</rss>
